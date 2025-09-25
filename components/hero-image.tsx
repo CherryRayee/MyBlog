@@ -1,3 +1,11 @@
+/*
+ * @Description: Rui's codes.
+ * @Author: Qian Rui rqian20@fudan.edu.cn
+ * @version: 1.0
+ * @Date: 2025-09-25 09:26:25
+ * @LastEditors: Qian Rui rqian20@fudan.edu.cn
+ * @LastEditTime: 2025-09-25 13:55:13
+ */
 "use client";
 
 import * as React from "react";
@@ -19,7 +27,7 @@ export function HeroImage({ title, subtitle }: HeroProps) {
           className="aspect-square h-10 w-10 rounded-full border border-black"
           width={40}
           height={40}
-          src="/avatar.png"
+          src="/avatar.jpg"
           alt={defaultAuthor.name}
         />
       </div>
@@ -30,7 +38,7 @@ export function HeroImage({ title, subtitle }: HeroProps) {
       <div className="hidden w-4/12 lg:block">
         <AspectRatio ratio={9 / 14}>
           <Image
-            src="/avatar-hero-image.jpg"
+            src="/avatar-hero-image.png"
             alt={defaultAuthor.name}
             width={400}
             height={580}

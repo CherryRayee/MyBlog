@@ -1,3 +1,11 @@
+/*
+ * @Description: Rui's codes.
+ * @Author: Qian Rui rqian20@fudan.edu.cn
+ * @version: 1.0
+ * @Date: 2025-09-25 09:26:25
+ * @LastEditors: Qian Rui rqian20@fudan.edu.cn
+ * @LastEditTime: 2025-09-25 14:12:54
+ */
 import { AuthorType, SiteMetaData } from "@/types";
 
 import { socialProfiles } from "./social-data";
@@ -8,16 +16,16 @@ export const BASE_URL =
   `http://localhost:${process.env.PORT || 3000}`;
 
 export const defaultAuthor: AuthorType = {
-  name: "Amy Shields",
-  handle: "@amyshieldsfake",
+  name: "Ray Qian",
+  handle: "@CherryRayee",
   socialProfiles,
-  email: "definitelyfake@nevermind.com",
-  website: "https://nextjs.org",
-  jobTitle: "Frontend Engineer & UI Designer",
-  company: "Unicorns & Co.",
+  email: "eleanor_chien@foxmail.com",
+  website: "https://cherryrayee.com",
+  jobTitle: "Robotics Engineer",
+  company: "Fudan University",
   availableForWork: true,
   location: {
-    city: "Los Angeles",
+    city: "Shanghai",
     media: "/losangeles.jpg",
   },
 };
