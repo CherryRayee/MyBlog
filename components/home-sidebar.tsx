@@ -1,3 +1,11 @@
+/*
+ * @Description: Rui's codes.
+ * @Author: Qian Rui rqian20@fudan.edu.cn
+ * @version: 1.0
+ * @Date: 2025-09-25 09:26:25
+ * @LastEditors: Qian Rui rqian20@fudan.edu.cn
+ * @LastEditTime: 2025-09-25 19:20:45
+ */
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, MapPin, Pencil } from "lucide-react";
@@ -34,7 +42,7 @@ export function Sidebar({ className, ...props }: CardProps) {
         <Separator />
         <CardFooter>
           <Button variant="ghost" className="w-full" disabled>
-            Digital Nomad diaries <ArrowRight className="mr-2 h-4 w-4" />
+            Fantastic dreaming diaries <ArrowRight className="mr-2 h-4 w-4" />
           </Button>
         </CardFooter>
       </Card>
