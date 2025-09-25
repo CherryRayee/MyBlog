@@ -34,8 +34,16 @@ export default async function Home() {
   return (
     <div className="pb-10">
       <HeroSimple
-        title="Building hackin’ cool digital products around the world 🌴."
-        subtitle="I'm Amy. Frontend engineer writing code and blog on the internet."
+        title={
+          <>
+            ὁδὸς ἄνω κάτω μία καὶ ὡυτή
+            <br />
+            <span className="text-xl italic sm:text-2xl md:text-3xl">
+              &ldquo;The way upward and the way downward is one and the same&rdquo;
+            </span>
+          </>
+        }
+        subtitle="I'm Ray. Robotics engineer who loves operas and pole dance."
       />
       <div className="container mt-12 max-w-6xl">
         <div className="grid grid-cols-1 place-items-start justify-between gap-12 lg:grid-cols-3">

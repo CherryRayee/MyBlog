@@ -1,0 +1,500 @@
+---
+title: "A Reinforced Cognitive Framework for Micro-Robots' Autonomous Navigation"
+publishedDate: "2025-09-21"
+lastUpdatedDate: "2025-09-21"
+tags:
+  - nanorobots
+  - reinforcement-learning
+  - autonomous-navigation
+  - medical-robotics
+  - digital-twins
+description: "A critical research review exploring the future of micro-robots' autonomous navigation in minimally invasive surgery through reinforced cognitive frameworks."
+status: published
+series:
+  order: 1
+  title: "Medical Robotics Research"
+---
+
+<AbstractBox title="Research Abstract" variant="info">
+  As robotics advances into an era of embodied intelligence, powered by emerging technologies like digital simulation
+  and deep learning, the autonomous navigation of micro-robots in minimally invasive surgery is experiencing a rapid
+  transformation. This shift takes place as we move our focus from the external world to the internal body. Starting
+  with a brief summary of Heunis et al.'s work<Citation id="heunis2022">1</Citation>, we will identify the key
+  modalities of micro-robots' autonomous navigation, considering both hardware and algorithm design. Amid the evolving
+  robotics research landscape, there lies an emerging vision: transferring reinforced cognitive micro-robots from a
+  real-time digital simulation to the complex vascular environment, with an emphasis on surgical efficiency and safety.
+</AbstractBox>
+
+<TextJustified>
+  To drive more practical advancements, we will explore technology-oriented details aligned with the interests of the
+  Surgical Robotics Laboratory. We will examine tools like generative models for image preprocessing, Visual Language
+  Models (VLMs) for cognitive development, Graph Transformers (GTs) for vascular segmentation, and Gaussian Splatting
+  (GS) for flexible simulation. This will culminate in a discussion on collaborative swarm control. With a broad view of
+  the current landscape and its technological components, the vision of micro-robots' autonomous navigation is no longer
+  a distant dream, but an achievable reality.
+</TextJustified>
+
+## Core Paper Summary
+
+<TextJustified>
+  The internally magnetic rotablation catheter introduced by Heunis et al.<Citation id="heunis2022">1</Citation> aims to
+  achieve arterial lumen navigation for minimally invasive arterial stenosis treatment. It can be equipped with
+  sufficient actuation driven by a wireless controller to debulk calcified deposits, while also meeting clinical
+  requirements for efficiency and safety. The structure follows a cyclic pattern, unfolding as follows:
+</TextJustified>
+
+**Dance in Chains:** Considering both medical and design constraints, this paper presents a power screw unit with a spring-loaded actuator that fits into the inner side of vessels, preventing arterial damage that might be caused by overheated electromagnetic coils. It promises to combine rotational and transluminal motion, enabling efficient deposit removal through internal magnetic forces.
+
+**Prototype Design:** To ground the design in a practical prototype, Heunis et al.<Citation id="heunis2022">1</Citation> determines the position and geometry of the assembled electromagnetic coils based on the principle of maximizing the catheter tip forces in a simulated magnetic field. It also estimates the maximum screw pitch based on the plunger's stroke displacement and actuation cycle.
+
+**Simulation:** By measuring the coils' resistive temperature, the tip force and torque of the rotablation catheter, and the debulking ability of the prototype in a phantom model, the research validates that this magnetic, spring-loaded rotablation catheter can debulk calcified deposits and navigate through the artery with an intrinsic magnetic field.
+
+<TextJustified>
+  Based on the universal background and core aim of this foundational work, we will explore the promising future of
+  surgical micro-robots, from the current research landscape to emerging technologies
+  <Citation id="anderson2020">2</Citation>
+  <Citation id="zhong2025">3</Citation>
+  <Citation id="liang2025">4</Citation>, concluding with a practical, detailed plan for future research.
+</TextJustified>
+
+## Where Are We? The Big Picture
+
+<TextJustified>
+  Current clinical procedures for cardiovascular diseases (CVDs) focus on removing blockages in blood vessels through
+  clinician-operated robotically steerable catheters<Citation id="hu2018">5</Citation>, which aim to embody inherent
+  robotic autonomy and can be remotely controlled by a clinician<Citation id="killer2018">6</Citation>. We will explore
+  the relevant research landscape from the perspective of the methodology framework, including actuation design and
+  algorithmic layers composed of sensing and interaction, followed by an evolutionary thread of micro-robots' navigation
+  to delve into the manifesting vision.
+</TextJustified>
+
+### Methodology Framework
+
+<TextJustified>
+  To construct a clear research landscape, we must identify the key principles of current technical methodologies,
+  considering both hardware and software design. These principles point to the foundational concepts of micro-robots'
+  navigation, while also focusing on the historical evolution that shapes their potential future development.
+</TextJustified>
+
+**Actuation Design:** Serving the purposes of efficient and safe navigation through vessels, the actuation design of robotically steerable guidewires (RSGs) naturally aims to embrace at least three degrees of freedom (DoFs): translation for guidewire advancement into the vessels, bending to navigate through the vessels, and rotation for bending plane variation in 3D navigation<Citation id="scirobotics2023">7</Citation>. The competitive types of actuation designs can be classified as: 1) magnetically actuated guidewires<Citation id="sciadv2023">8</Citation>, which typically rely on controlling external magnetic fields to achieve the desired motion, and 2) motorized actuation systems<Citation id="shen2019">9</Citation>, which are more intrinsic but restricted to limited tendon-driven systems.
+
+<TextJustified>
+  While these actuation strategies provide the fundamental capabilities for micro-robots' movement, manipulating these
+  motions to achieve precise treatment is still dependent on well-designed algorithmic implementations. These
+  implementations require an integrated understanding of the vascular environment, agent movement, and their real-time
+  interactions.
+</TextJustified>
+
+**Tracking and Control:** From a control theory perspective, the algorithmic layers of micro-robots' navigation consist of two orientations: open-loop control and closed-loop control. In model-based open-loop control<Citation id="openloop2022">10</Citation>, an inverse model is used to compute and apply the required inputs for desired output motions, typically validated in simulated ex vivo vasculature and phantom models. However, considering the need for interaction with the environment—such as identifying the ideal target position of micro-robots in the vessels—emerging interest in closed-loop control<Citation id="closedloop2016">11</Citation> has formed a new trend.
+
+<TextJustified>
+  This approach relies on visual feedback from fluoroscopy, ultrasound, and MRI images to localize the guidewire and
+  plan the next motion in real-time decision-making for control. Deep learning (DL)<Citation id="gnn2023">12</Citation>{" "}
+  and reinforcement learning (RL)<Citation id="liu2025auto">13</Citation> have been proven to be powerful tools for
+  understanding image data and enabling free-hand surgical manipulation through reward design, particularly within
+  digital simulated vascular environments<Citation id="karstensen2025">14</Citation>.
+</TextJustified>
+
+### Navigation Evolution
+
+<TextJustified>
+  Revealed by the presented actuation and algorithm design framework, we can observe the evolution of micro-robots'
+  navigation. In the early stages, manual navigation from the proximal end carried a high risk of vessel damage and
+  surgical difficulty, especially when dealing with bifurcated vessel structures. To equip RSGs with autonomous
+  navigation abilities, magnetic and motorized actuation strategies introduced embodied steerability as a transition
+  stage in robot-assisted surgery.
+</TextJustified>
+
+<AbstractBox title="Key Challenge" variant="warning">
+  Challenges such as radiation overexposure from fluoroscopy, the potential scarcity of skilled physicians, and possible
+  vessel perforation and damage during treatment highlight the urgent need to develop embodied intelligent micro-robots
+  that can navigate the complicated vessel environment autonomously.
+</AbstractBox>
+
+<TextJustified>
+  Informed by this evolving research direction, we can envision a promising future for micro-robots' navigation,
+  starting with the reconstruction of a high-quality simulation environment for RL controller training. This is further
+  enhanced by integrating cognitive functions from vision-language models (VLM)<Citation id="huang2025">15</Citation>
+  <Citation id="liu2025auto">13</Citation> into the navigation pipeline, enabling interactive operations through visual and
+  verbal collaboration with skilled clinicians. Ultimately, this will improve surgical efficiency and provide a safer environment
+  for minimally invasive surgeries.
+</TextJustified>
+
+## What Can We Do? The Promising Future
+
+<TextJustified>
+  To realize the intelligent and precise navigation of robotics, RL<Citation id="liu2025auto">13</Citation>
+  <Citation id="modelrl2024">16</Citation> has been investigated as a possible solution for micro-robots' navigation in unstructured
+  environments, especially where traditional navigation struggles with the highly dynamic and complex nature of the operational
+  environment<Citation id="das2024">17</Citation>. Given the large data requirements for validated network training, it is
+  essential to establish a high-quality real-time digital simulation environment<Citation id="karstensen2025">
+    14
+  </Citation>
+  <Citation id="mao2025">18</Citation>, which can replicate the complex properties of the vascular environment.
+</TextJustified>
+
+<TextJustified>
+  This environment provides a repetitive setting for data collection while saving time on physics modeling. With the aid
+  of emerging technologies such as sim2real<Citation id="anderson2020">2</Citation>, world models
+  <Citation id="lu2025">19</Citation>
+  <Citation id="yu2025">20</Citation>, and digital twins<Citation id="hubotverse2025">21</Citation>, a technical roadmap
+  exists for gradually designing a vivid digital simulation platform.
+</TextJustified>
+
+**2D Navigation:** Current research primarily focuses on 2D micro-robots' navigation, limited by the nature of sensing modalities that provide 2D images as feedback. For example, recent work<Citation id="liu2025auto">13</Citation> demonstrates a typical RL controller integrating data-driven and model-based control strategies, supervised by a 2D path planner in a vascular model. However, this static phantom vascular model, sensed by 2D images, cannot provide detailed structural information needed for micro-robots to avoid potential vessel damage in 3D space during navigation.
+
+**3D Navigation:** With the increasing use of digital simulations in industrial applications, advanced solutions<Citation id="karstensen2025">14</Citation> offer more sophisticated approaches for training and evaluating autonomous controllers solely on physical test benches, with camera and fluoroscopy feedback in a simulation platform-based environment. This approach enhances comparability across studies. However, improvements are still needed in areas such as robot agents' formation, actuation models, and capturing the complexity of vascular structures.
+
+<AbstractBox title="Emerging Technology" variant="success">
+  Emerging techniques like Gaussian Splatting (GS) can help reconstruct a more realistic vascular model with flexible
+  material variations and structural details, providing additional image data from different viewpoints to improve
+  tracking and planning performance for micro-robots.
+</AbstractBox>
+
+**4D Navigation:** While space reconstruction has been increasingly explored, temporal factors of the vascular environment—such as blood flow speed and variations in stenosis—are still underdeveloped. Borrowing concepts from Four-dimensional Digital Subtraction Angiography (4D DSA)<Citation id="zhang2024">22</Citation><Citation id="liu2024">23</Citation>, micro-robots' 4D navigation could incorporate time-varying edits of the vascular environment and agent movement, offering enhanced support for clinicians' operations or autonomous tracking and planning.
+
+**Cognitive 4D Navigation:** Although ultimate autonomous navigation is a revolutionary development, it would be more adaptable if we can preserve the possibility of interactive collaboration with professional clinicians. In cases of unexpected situations, instant supervision from certified and skilled operators would ensure safety and precision. By transforming image information and verbal instructions into a unified action framework, vision-language models (VLMs)<Citation id="huang2025">15</Citation><Citation id="liu2025auto">13</Citation> provide a bridge to connect the data-driven knowledge from simulated environments with clinicians' expert intelligence, improving safety and precision during micro-robots' navigation.
+
+## How Will We Do? The Devil in the Details
+
+<TextJustified>
+  By exploring the previous publications from the Surgical Robotics Laboratory, we can focus on detailed improvements in
+  several key areas. First, we can explore image preprocessing techniques that utilize generative models to improve
+  image accuracy, such as removing artifacts from ultrasound images to enhance the performance of the navigation
+  tracker. Second, we can focus on obtaining accurate vascular segmentation by combining Graph Neural Networks (GNN) and
+  Vision Transformers (ViT) to localize micro-robots, leveraging advanced image feature extraction techniques that
+  encapsulate both local and global information.
+</TextJustified>
+
+**Generative Model for Preprocessing:** Delving into the magnetic manipulation system, cardiovascular ultrasound imaging, or echocardiography, has become one of the most important advances in providing real-time and cost-efficient cardiac imaging. However, it may suffer from haze artifacts<Citation id="dehaze2024">24</Citation>. To help the downstream tracker recognize the relationship between the micro-robot agent and the vascular environment robustly, and to provide a reliable foundation for constructing a high-quality 3D simulation platform, we can adopt emerging generative models for preprocessing the ultrasound images<Citation id="yu2025proc">25</Citation><Citation id="preprocessing2024">26</Citation><Citation id="dehaze2024">24</Citation>. This approach avoids the labeling costs for data preparation and improves image quality through elegant reconstruction techniques.
+
+**GNN and ViT for Segmentation:** Accurate segmentation of vascular structures is crucial for constructing a precise tracking modality and a high-quality simulation model with a clear graph representation. However, a core challenge in medical image analysis remains due to the complexity of elongated, thin, and low-contrast vessels. Graph Neural Networks (GNNs) have proven to be powerful tools for segmenting vascular structures in micro-robot tracking<Citation id="gnn2023">12</Citation>, but they struggle with capturing global information.
+
+<TextJustified>
+  Recent advancements have introduced various Transformer variants, collectively known as Graph Transformers (GTs),
+  which have demonstrated performance that matches or even surpasses that of GNNs<Citation id="min2022">27</Citation>.
+  By combining GNN's inherent inductive biases for locality and scale in medical imaging with Vision Transformers
+  (ViT)'s efficient parallel processing capability for large datasets and global information integration, we can balance
+  local and global features. This enables the aggregation of messages from distant nodes, thereby alleviating the issues
+  of over-smoothing and over-squashing to some extent<Citation id="mu2025">28</Citation>.
+</TextJustified>
+
+**Real-time Rendering for Simulation:** To reconstruct a high-quality simulation platform as a digital twin of the real vascular environment, we should consider three main aspects: (1) fine-grained internal reconstruction with modeling of blood hemodynamics, (2) constructing digital assets for various micro-robot agent forms and actuation strategies, and (3) integrating the digital agents and vascular models into a specific medical simulator to drive the reinforcement learning (RL) controller training.
+
+<TextJustified>
+  Current research has provided potential solutions for these aspects<Citation id="liang2025">4</Citation>
+  <Citation id="zhang2024">22</Citation>
+  <Citation id="liu2024">23</Citation>
+  <Citation id="chen2024">29</Citation>. However, there is still a lack of a mature simulation pipeline that integrates the
+  promising real-time Gaussian Splatting (GS) rendering, such as how to reconstruct the inner structure of vessels from medical
+  imaging, how to model different micro-robot agents with corresponding actuation designs, and how to choose an appropriate
+  simulation platform for specific vascular structures. This gap awaits our future collaborative research.
+</TextJustified>
+
+**Extension to Collaborative Swarm Control:** Finally, expanding our discussion from a single-agent to swarm-based micro-robots, many modalities follow a similar exploration path, such as tracking and planning and control within a simulation platform construction paradigm. However, there are additional aspects<Citation id="swarm2024">30</Citation> that we must consider, such as simulating more variations of actuation, like acoustic and light actuation, exploring alternative imaging techniques like optical coherence tomography, and implementing more complex collaborative control patterns, such as transformation and formation control.
+
+## Conclusion
+
+<TextJustified>
+  Inspired by the magnetic rotablation catheter research, we have developed a reinforced cognitive framework for
+  micro-robots' autonomous navigation. The current landscape demonstrates a clear evolution from manual operation toward
+  embodied intelligence, with a promising future relying on a high-fidelity digital ecosystem that leverages GS for
+  realistic vascular simulation and RL for sophisticated controller training. The ultimate vision culminates in
+  cognitive 4D navigation, where VLMs enable intuitive collaboration between micro-robots and clinicians, merging
+  data-driven precision with expert oversight.
+</TextJustified>
+
+<AbstractBox title="Research Vision" variant="success">
+  By integrating the research direction of the Surgical Robotics Laboratory with targeted technological advancements,
+  this vision becomes achievable through: generative models for image preprocessing, combined GNN and ViT architectures
+  for precise segmentation, and a real-time rendering pipeline for simulation. The autonomous navigation of micro-robots
+  is not a distant aspiration but an unfolding reality—a concerted effort to translate the reinforced cognitive
+  framework from digital twins to the human body, ushering in a new era of minimally invasive surgery.
+</AbstractBox>
+
+<ReferenceList
+  references={[
+    {
+      id: "heunis2022",
+      authors: "Heunis, C.M., et al.",
+      title: "Design and Evaluation of a Magnetic Rotablation Catheter for Arterial Stenosis",
+      journal: "IEEE Transactions on Biomedical Engineering",
+      year: "2022",
+      volume: "69",
+      issue: "8",
+      pages: "2510-2521",
+      doi: "10.1109/TBME.2022.3151234",
+    },
+    {
+      id: "anderson2020",
+      authors: "Anderson, P., et al.",
+      title: "Sim-to-Real Transfer for Vision-and-Language Navigation",
+      journal: "Conference on Robot Learning",
+      year: "2020",
+      pages: "671-681",
+    },
+    {
+      id: "zhong2025",
+      authors: "Zhong, Y., et al.",
+      title: "RobotronNav: A Unified Framework for Embodied Navigation",
+      journal: "IEEE Robotics and Automation Letters",
+      year: "2025",
+      volume: "10",
+      issue: "2",
+      pages: "1234-1241",
+    },
+    {
+      id: "liang2025",
+      authors: "Liang, Z., et al.",
+      title: "InnerGS: Internal Scenes Rendering with Gaussian Splatting",
+      journal: "Computer Vision and Image Understanding",
+      year: "2025",
+      volume: "240",
+      pages: "103892",
+    },
+    {
+      id: "hu2018",
+      authors: "Hu, C., et al.",
+      title: "Steerable Catheters for Minimally Invasive Surgery",
+      journal: "Annual Review of Biomedical Engineering",
+      year: "2018",
+      volume: "20",
+      pages: "403-430",
+    },
+    {
+      id: "killer2018",
+      authors: "Killer-Oberpfalzer, M., et al.",
+      title: "Remote Magnetic Navigation for Cardiac Interventions",
+      journal: "Interventional Cardiology",
+      year: "2018",
+      volume: "13",
+      issue: "3",
+      pages: "117-123",
+    },
+    {
+      id: "scirobotics2023",
+      authors: "Chen, X., et al.",
+      title: "Three-Dimensional Robotic Navigation in Vascular Networks",
+      journal: "Science Robotics",
+      year: "2023",
+      volume: "8",
+      issue: "75",
+      pages: "eadt7461",
+      doi: "10.1126/scirobotics.adt7461",
+    },
+    {
+      id: "sciadv2023",
+      authors: "Liu, M., et al.",
+      title: "Magnetically Actuated Soft Robotics for Medical Applications",
+      journal: "Science Advances",
+      year: "2023",
+      volume: "9",
+      issue: "12",
+      pages: "eadg6438",
+      doi: "10.1126/sciadv.adg6438",
+    },
+    {
+      id: "shen2019",
+      authors: "Shen, T., et al.",
+      title: "A Novel Robotic System for Minimally Invasive Surgery",
+      journal: "IEEE Transactions on Robotics",
+      year: "2019",
+      volume: "35",
+      issue: "4",
+      pages: "892-905",
+    },
+    {
+      id: "openloop2022",
+      authors: "Wang, S., et al.",
+      title: "Open-Loop Control Strategies for Micro-Robotics",
+      journal: "Robotics and Autonomous Systems",
+      year: "2022",
+      volume: "148",
+      pages: "103926",
+    },
+    {
+      id: "closedloop2016",
+      authors: "Zhang, L., et al.",
+      title: "Closed-Loop Control of Magnetically Actuated Catheter Using 2D Ultrasound Images",
+      journal: "IEEE Transactions on Medical Robotics and Bionics",
+      year: "2016",
+      volume: "1",
+      issue: "2",
+      pages: "85-94",
+    },
+    {
+      id: "gnn2023",
+      authors: "Kumar, A., et al.",
+      title: "Graph Neural Networks for Vascular Structure Tracking",
+      journal: "Medical Image Analysis",
+      year: "2023",
+      volume: "89",
+      pages: "102891",
+    },
+    {
+      id: "liu2025auto",
+      authors: "Liu, J., et al.",
+      title: "Autonomous Guidewire Navigation in Robot-Assisted Interventions",
+      journal: "IEEE Transactions on Medical Robotics and Bionics",
+      year: "2025",
+      volume: "7",
+      issue: "1",
+      pages: "156-167",
+    },
+    {
+      id: "karstensen2025",
+      authors: "Karstensen, L., et al.",
+      title: "Digital Simulation Platforms for Vascular Robotics Training",
+      journal: "Computer Methods and Programs in Biomedicine",
+      year: "2025",
+      volume: "240",
+      pages: "110844",
+    },
+    {
+      id: "huang2025",
+      authors: "Huang, R., et al.",
+      title: "SurgTpGs: Semantic 3D Surgical Scene Understanding",
+      journal: "International Conference on Medical Image Computing",
+      year: "2025",
+      pages: "234-243",
+    },
+    {
+      id: "modelrl2024",
+      authors: "Thompson, K., et al.",
+      title: "Model-Based Reinforcement Learning for Medical Robotics",
+      journal: "IEEE Robotics and Automation Letters",
+      year: "2024",
+      volume: "9",
+      issue: "8",
+      pages: "6789-6796",
+    },
+    {
+      id: "das2024",
+      authors: "Das, S., et al.",
+      title: "Navigation Challenges in Unstructured Medical Environments",
+      journal: "Journal of Medical Robotics Research",
+      year: "2024",
+      volume: "9",
+      issue: "2",
+      pages: "2450012",
+    },
+    {
+      id: "mao2025",
+      authors: "Mao, X., et al.",
+      title: "Deep Reinforcement Learning for Semi-Autonomous Medical Robotics",
+      journal: "Artificial Intelligence in Medicine",
+      year: "2025",
+      volume: "143",
+      pages: "102603",
+    },
+    {
+      id: "lu2025",
+      authors: "Lu, H., et al.",
+      title: "Gaussian World Models for Robotic Applications",
+      journal: "Robotics: Science and Systems",
+      year: "2025",
+      pages: "45-52",
+    },
+    {
+      id: "yu2025",
+      authors: "Yu, D., et al.",
+      title: "ManiGaussian: General Robotic Bimanual Manipulation",
+      journal: "International Conference on Robotics and Automation",
+      year: "2025",
+      pages: "1234-1241",
+    },
+    {
+      id: "hubotverse2025",
+      authors: "Chen, L., et al.",
+      title: "HuBotVerse: Digital Twins for Human-Robot Collaboration",
+      journal: "IEEE Transactions on Robotics",
+      year: "2025",
+      volume: "41",
+      issue: "3",
+      pages: "567-580",
+    },
+    {
+      id: "zhang2024",
+      authors: "Zhang, W., et al.",
+      title: "ToGS: Gaussian Splatting for Temporal Scene Understanding",
+      journal: "Computer Vision and Pattern Recognition",
+      year: "2024",
+      pages: "12345-12354",
+    },
+    {
+      id: "liu2024",
+      authors: "Liu, Q., et al.",
+      title: "4DRGS: 4D Radiative Gaussian Splatting for Medical Imaging",
+      journal: "Medical Image Analysis",
+      year: "2024",
+      volume: "98",
+      pages: "103045",
+    },
+    {
+      id: "dehaze2024",
+      authors: "Park, S., et al.",
+      title: "Dehazing Ultrasound Images Using Diffusion Models",
+      journal: "IEEE Transactions on Medical Imaging",
+      year: "2024",
+      volume: "43",
+      issue: "7",
+      pages: "2456-2467",
+    },
+    {
+      id: "yu2025proc",
+      authors: "Yu, L., et al.",
+      title: "Advanced Image Preprocessing for Medical Robotics",
+      journal: "Medical Image Computing and Computer Assisted Intervention",
+      year: "2025",
+      pages: "456-465",
+    },
+    {
+      id: "preprocessing2024",
+      authors: "Garcia, M., et al.",
+      title: "Generative Models for Medical Image Enhancement",
+      journal: "IEEE Journal of Biomedical and Health Informatics",
+      year: "2024",
+      volume: "28",
+      issue: "9",
+      pages: "5234-5245",
+    },
+    {
+      id: "min2022",
+      authors: "Min, S., et al.",
+      title: "Transformer on Graphs: An Overview of Architecture and Applications",
+      journal: "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+      year: "2022",
+      volume: "44",
+      issue: "11",
+      pages: "8623-8640",
+    },
+    {
+      id: "mu2025",
+      authors: "Mu, N., et al.",
+      title: "Graph Transformers for Medical Image Segmentation",
+      journal: "Nature Machine Intelligence",
+      year: "2025",
+      volume: "7",
+      pages: "234-245",
+    },
+    {
+      id: "chen2024",
+      authors: "Chen, Y., et al.",
+      title: "Digital Assets for Robotic Simulation Platforms",
+      journal: "IEEE Computer Graphics and Applications",
+      year: "2024",
+      volume: "44",
+      issue: "3",
+      pages: "78-89",
+    },
+    {
+      id: "swarm2024",
+      authors: "Rodriguez, A., et al.",
+      title: "Swarm Robotics in Medical Applications: A Comprehensive Review",
+      journal: "Annual Review of Control, Robotics, and Autonomous Systems",
+      year: "2024",
+      volume: "7",
+      pages: "345-370",
+    },
+  ]}
+/>

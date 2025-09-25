@@ -4,7 +4,7 @@
  * @version: 1.0
  * @Date: 2025-09-25 09:26:25
  * @LastEditors: Qian Rui rqian20@fudan.edu.cn
- * @LastEditTime: 2025-09-25 14:12:54
+ * @LastEditTime: 2025-09-25 16:34:22
  */
 import { AuthorType, SiteMetaData } from "@/types";
 
@@ -31,7 +31,7 @@ export const defaultAuthor: AuthorType = {
 };
 
 const defaultTitle = `${defaultAuthor.name}'s Blog`;
-const defaultDescription = `I'm ${defaultAuthor.name}. Building hackin’ cool digital products around the world 🌴.`;
+const defaultDescription = `I'm ${defaultAuthor.name}. ὁδὸς ἄνω κάτω μία καὶ ὡυτή`;
 
 const siteMetadata: SiteMetaData = {
   title: {
@@ -44,7 +44,7 @@ const siteMetadata: SiteMetaData = {
   newsletterUrl: "https://developreneur.davidlevai.com",
   analyticsProvider: "umami",
   defaultTheme: "system",
-  activeAnnouncement: true,
+  activeAnnouncement: false,
   announcement: {
     buttonText: "Support on DevHunt →",
     link: "https://devhunt.org/tool/modern-developer-blog-template-digital-garden-starter",
