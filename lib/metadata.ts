@@ -4,7 +4,7 @@
  * @version: 1.0
  * @Date: 2025-09-25 09:26:25
  * @LastEditors: Qian Rui rqian20@fudan.edu.cn
- * @LastEditTime: 2025-09-25 16:34:22
+ * @LastEditTime: 2025-09-28 12:57:03
  */
 import { AuthorType, SiteMetaData } from "@/types";
 
@@ -26,7 +26,7 @@ export const defaultAuthor: AuthorType = {
   availableForWork: true,
   location: {
     city: "Shanghai",
-    media: "/losangeles.jpg",
+    media: "/shanghai.jpg",
   },
 };
 

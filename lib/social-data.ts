@@ -1,9 +1,17 @@
+/*
+ * @Description: Rui's codes.
+ * @Author: Qian Rui rqian20@fudan.edu.cn
+ * @version: 1.0
+ * @Date: 2025-09-25 09:26:25
+ * @LastEditors: Qian Rui rqian20@fudan.edu.cn
+ * @LastEditTime: 2025-09-28 13:04:53
+ */
 import { SocialProfile } from "@/types";
 
 export const socialProfiles: SocialProfile[] = [
   {
     name: "github",
-    link: "https://github.com/thedevdavid",
+    link: "https://github.com/CherryRayee",
   },
   {
     name: "instagram",
