@@ -63,7 +63,7 @@ export const Post = defineDocumentType(() => ({
   },
   computedFields: {
     tagSlugs: {
-      type: "list",
+      type: "json",
       resolve: async (doc) => {
         if (doc.tags) {
           // make a new array of tags to use them in computedFields https://github.com/contentlayerdev/contentlayer/issues/149
