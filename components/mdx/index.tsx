@@ -6,6 +6,7 @@ import { Tweet } from "react-tweet";
 
 import { AbstractBox } from "./abstract-box";
 import { Citation, Reference, ReferenceList } from "./citation";
+import { Highlight } from "./highlight";
 import { NewsletterCTA } from "./newsletter-cta";
 import { TextJustified } from "./text-justified";
 import { YouTubeVideo } from "./youtube-video";
@@ -29,6 +30,7 @@ const components = {
   Citation,
   Reference,
   ReferenceList,
+  Highlight,
   NewsletterCTA,
   TextJustified,
   YouTubeVideo,
