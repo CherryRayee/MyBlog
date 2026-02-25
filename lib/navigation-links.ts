@@ -47,4 +47,8 @@ export const navigationLinks: NavItem[] = [
     title: "Now",
     href: "/now",
   },
+  {
+    title: "Plan",
+    href: "/plan",
+  },
 ];

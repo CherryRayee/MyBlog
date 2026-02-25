@@ -46,6 +46,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "7.45.4",
     "react-tweet": "3.1.1",
+    "recharts": "^3.7.0",
     "rehype-autolink-headings": "6.1.1",
     "rehype-katex": "6.0.3",
     "rehype-pretty-code": "0.10.1",
